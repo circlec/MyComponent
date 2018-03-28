@@ -1,0 +1,19 @@
+ext {
+    android = [
+            compileSdkVersion: 26,
+            buildToolsVersion: "26.1.0",
+            minSdkVersion    : 15,
+            targetSdkVersion : 26
+    ]
+
+    //Version
+    supportLibrary = "26.1.0"
+
+    //supportLibraries dependencies
+    supportDependencies = [
+            supportAppcompat: "com.android.support:appcompat-v7:${supportLibrary}",
+            supportV4       : "com.android.support:support-v4:${supportLibrary}",
+            suppoutDesign   : "com.android.support:design:${supportLibrary}",
+            constraintLayout : 'com.android.support.constraint:constraint-layout:1.0.2'
+    ]
+}
