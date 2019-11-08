@@ -13,12 +13,6 @@ import io.reactivex.schedulers.Schedulers;
 import retrofit2.HttpException;
 import retrofit2.Response;
 
-/**
- * Created by chao.qu at 2017/10/20
- *
- * @author quchao
- */
-
 public class RxUtils {
 
     /**

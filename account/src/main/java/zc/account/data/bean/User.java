@@ -9,9 +9,9 @@ public class User {
 
     /**
      * id : 1
-     * token : 056603b6e5e3d50fe7cb833fce44f9b3
+     * token : aaaaaaaaaaa
      * roleName : OPERATOR
-     * userName : 13121080560
+     * userName : aaaa
      * roleRemark : 运营人员
      */
 

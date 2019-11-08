@@ -12,7 +12,10 @@ import zc.commonlib.network.RetrofitManager;
 public class AccountRepository implements AccountDataSource {
     private static AccountRepository INSTANCE = null;
 
+    private AccountDataSource apiService;
+
     private AccountRepository() {
+        apiService = RetrofitManager.getInstance().getRetrofitService(AccountDataSource.class);
     }
 
     public static AccountRepository getInstance() {
@@ -28,7 +31,7 @@ public class AccountRepository implements AccountDataSource {
 
     @Override
     public Observable<BaseResponse<User>> login(String userName, String password) {
-        return RetrofitManager.getInstance().getRetrofitService(AccountDataSource.class).login(userName,password);
+        return apiService.login(userName,password);
     }
 
     @Override

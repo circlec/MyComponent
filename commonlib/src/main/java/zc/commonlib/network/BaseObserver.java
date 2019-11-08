@@ -8,12 +8,6 @@ import io.reactivex.observers.ResourceObserver;
 import retrofit2.HttpException;
 import zc.commonlib.base.IBaseView;
 
-/**
- * @param <T>
- * @author quchao
- * @date 2017/11/27
- */
-
 public abstract class BaseObserver<T> extends ResourceObserver<T> {
 
     private IBaseView mView;

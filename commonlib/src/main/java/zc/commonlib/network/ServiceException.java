@@ -1,10 +1,5 @@
 package zc.commonlib.network;
 
-/**
- * @author quchao
- * @date 2017/11/27
- */
-
 public class ServiceException extends Exception {
 
     private int result;
