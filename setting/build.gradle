@@ -1,6 +1,6 @@
-if (rootProject.ext.isNeedAllModule) {
+if (!rootProject.ext.isNeedAllModule) {
     apply plugin: 'com.android.application'
-}else{
+} else {
     apply plugin: 'com.android.library'
 }
 
@@ -22,7 +22,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [ moduleName : project.getName() ]
+                arguments = [moduleName: project.getName()]
             }
         }
     }
@@ -38,7 +38,7 @@ android {
     sourceSets {
         main {
             //控制两种模式下的资源和代码配置情况
-            if (rootProject.ext.isNeedAllModule) {
+            if (!rootProject.ext.isNeedAllModule) {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
             } else {
 

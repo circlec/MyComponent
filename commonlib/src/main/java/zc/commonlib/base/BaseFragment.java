@@ -16,13 +16,25 @@ import java.lang.reflect.ParameterizedType;
  * @日期 2019/11/8
  * @描述
  */
-public class BaseFragment<T extends IBasePresenter> extends Fragment implements IBaseView {
+public abstract class BaseFragment<T extends IBasePresenter> extends Fragment implements IBaseView {
     public final String TAG = this.getClass().getSimpleName();
     protected T mPresenter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(getLayoutId(), container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mvpInit();
+        initView();
+        initData();
+    }
+
+    private void mvpInit() {
         try {
             ParameterizedType pt = (ParameterizedType) this.getClass().getGenericSuperclass();
             Class<T> clazz = (Class<T>) pt.getActualTypeArguments()[0];
@@ -33,7 +45,17 @@ public class BaseFragment<T extends IBasePresenter> extends Fragment implements 
         } catch (java.lang.InstantiationException e) {
             throw new RuntimeException("mPresenter init error");
         }
-        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+
+    @Override
+    public void onDestroyView() {
+        if (mPresenter != null) {
+            mPresenter.unBindView();
+            mPresenter = null;
+        }
+        super.onDestroyView();
+
     }
 
     @Override

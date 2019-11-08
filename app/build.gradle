@@ -53,7 +53,7 @@ dependencies {
 
     implementation project(':commonlib')
 
-    if (!rootProject.ext.isNeedAllModule) {
+    if (rootProject.ext.isNeedAllModule) {
         implementation project(':account')
         implementation project(':setting')
     }

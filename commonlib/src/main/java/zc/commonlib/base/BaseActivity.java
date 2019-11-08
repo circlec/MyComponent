@@ -9,13 +9,21 @@ import java.lang.reflect.ParameterizedType;
 
 import zc.commonlib.ActivityManager;
 
-
-public class BaseActivity<T extends IBasePresenter> extends AppCompatActivity implements IBaseView {
+public abstract class BaseActivity<T extends IBasePresenter> extends AppCompatActivity implements IBaseView {
     public final String TAG = this.getClass().getSimpleName();
     protected T mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        mvpInit();
+        super.onCreate(savedInstanceState);
+        setContentView(getLayoutId());
+        ActivityManager.add(this);
+        initView();
+        initData();
+    }
+
+    private void mvpInit() {
         try {
             ParameterizedType pt = (ParameterizedType) this.getClass().getGenericSuperclass();
             Class<T> clazz = (Class<T>) pt.getActualTypeArguments()[0];
@@ -26,8 +34,6 @@ public class BaseActivity<T extends IBasePresenter> extends AppCompatActivity im
         } catch (InstantiationException e) {
             throw new RuntimeException("mPresenter init error");
         }
-        super.onCreate(savedInstanceState);
-        ActivityManager.add(this);
     }
 
     @Override
