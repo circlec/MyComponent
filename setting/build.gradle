@@ -1,0 +1,70 @@
+if (rootProject.ext.isAlone) {
+    apply plugin: 'com.android.application'
+}else{
+    apply plugin: 'com.android.library'
+}
+
+//android配置
+def config = rootProject.ext.android
+
+//相关库依赖
+def supportLib = rootProject.ext.supportDependencies
+//其他相关库依赖
+def otherLib = rootProject.ext.otherDependencies
+android {
+    compileSdkVersion config.compileSdkVersion
+    defaultConfig {
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    resourcePrefix "setting_"
+
+    sourceSets {
+        main {
+            //控制两种模式下的资源和代码配置情况
+            if (rootProject.ext.isAlone) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            } else {
+
+                manifest.srcFile 'src/main/setting/AndroidManifest.xml'
+                //集成开发模式下排除debug文件夹中的所有Java文件
+                java {
+                    exclude 'debug/**'
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation supportLib.supportAppcompat
+    implementation supportLib.constraintLayout
+    implementation supportLib.suppoutDesign
+    testImplementation otherLib.junit
+    //noinspection GradleCompatible
+    androidTestImplementation supportLib.suppoutTestRunner
+    androidTestImplementation supportLib.suppoutTestEspresso
+
+    implementation otherLib.arouterApi
+    annotationProcessor otherLib.arouterAnnotationProcessor
+
+    implementation project(":commonlib")
+}

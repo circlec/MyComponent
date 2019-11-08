@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+//android配置
+def config = rootProject.ext.android
+//相关库依赖
+def supportLib = rootProject.ext.supportDependencies
+//其他相关库依赖
+def otherLib = rootProject.ext.otherDependencies
+android {
+    compileSdkVersion config.compileSdkVersion
+    defaultConfig {
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation supportLib.supportAppcompat
+    implementation supportLib.constraintLayout
+    implementation supportLib.suppoutDesign
+    testImplementation otherLib.junit
+    //noinspection GradleCompatible
+    androidTestImplementation supportLib.suppoutTestRunner
+    androidTestImplementation supportLib.suppoutTestEspresso
+
+    implementation otherLib.arouterApi
+    annotationProcessor otherLib.arouterAnnotationProcessor
+
+    api 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    api 'com.squareup.okhttp3:okhttp:3.10.0'
+    api 'com.squareup.retrofit2:retrofit:2.4.0'
+    api 'com.squareup.retrofit2:converter-gson:2.3.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    api 'io.reactivex.rxjava2:rxjava:2.1.16'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
+    api 'com.github.bumptech.glide:glide:4.6.1'
+    api 'com.liulishuo.filedownloader:library:1.6.2'
+
+
+
+}
