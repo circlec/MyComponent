@@ -14,9 +14,10 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import zc.commonlib.network.BaseResponse;
 import zc.commonlib.network.RetrofitManager;
+import zc.commonlib.router.ARouterPath;
 import zc.commonlib.router.RouterCommonUtil;
 
-@Route(path = "/setting/setting")
+@Route(path = ARouterPath.SETTING_SETTING)
 public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

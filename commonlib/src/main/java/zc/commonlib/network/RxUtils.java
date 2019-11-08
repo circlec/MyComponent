@@ -12,7 +12,6 @@ import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.HttpException;
 import retrofit2.Response;
-import zc.commonlib.BaseApplication;
 
 /**
  * Created by chao.qu at 2017/10/20
@@ -54,8 +53,7 @@ public class RxUtils {
         return httpResponseObservable ->
                 httpResponseObservable.flatMap((Function<BaseResponse<T>, Observable<T>>) baseResponse -> {
                     if (baseResponse.getResult() == BaseResponse.SUCCESS
-                            && baseResponse.getValue() != null
-                            && isNetworkConnected(BaseApplication.getInstance().getApplicationContext())) {
+                            && baseResponse.getValue() != null) {
                         return createData(baseResponse.getValue());
                     } else {
                         return Observable.error(new ServiceException(baseResponse.getMessage(), baseResponse.getResult()));
@@ -78,8 +76,7 @@ public class RxUtils {
                         return Observable.error(new HttpException(baseResponse));
                     } else {
                         if (response.getResult() == BaseResponse.SUCCESS
-                                && response.getValue() != null
-                                && isNetworkConnected(BaseApplication.getInstance().getApplicationContext())) {
+                                && response.getValue() != null) {
                             return createData((T) response.getValue());
                         } else {
                             return Observable.error(new ServiceException(response.getMessage(), response.getResult()));
@@ -108,7 +105,7 @@ public class RxUtils {
     public static ObservableTransformer<BaseResponse, BaseResponse> handleBaseResponseResult() {
         return httpResponseObservable ->
                 httpResponseObservable.flatMap((Function<BaseResponse, Observable<BaseResponse>>) baseResponse -> {
-                    if (baseResponse != null && baseResponse.getResult() == BaseResponse.SUCCESS && isNetworkConnected(BaseApplication.getInstance().getApplicationContext())) {
+                    if (baseResponse != null && baseResponse.getResult() == BaseResponse.SUCCESS) {
                         return createData(baseResponse);
                     } else {
                         return Observable.error(new ServiceException(baseResponse.getMessage(), baseResponse.getResult()));

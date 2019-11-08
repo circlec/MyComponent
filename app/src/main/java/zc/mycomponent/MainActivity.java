@@ -7,12 +7,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
 
 import zc.commonlib.router.RouterCommonUtil;
+import zc.commonlib.router.ARouterPath;
 
-
-@Route(path = "/app/home")
+@Route(path = ARouterPath.APP_HOME)
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

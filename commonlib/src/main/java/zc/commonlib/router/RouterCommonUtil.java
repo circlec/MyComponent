@@ -7,11 +7,11 @@ import com.alibaba.android.arouter.launcher.ARouter;
 public class RouterCommonUtil {
 
     public static void startLoginActivity(final Context context) {
-        ARouter.getInstance().build("/account/login").navigation(context);
+        ARouter.getInstance().build(ARouterPath.ACCOUNT_LOGIN).navigation(context);
     }
 
     public static void startSettingActivity(final Context context) {
-        ARouter.getInstance().build("/setting/setting").navigation(context);
+        ARouter.getInstance().build(ARouterPath.SETTING_SETTING).navigation(context);
     }
 
 

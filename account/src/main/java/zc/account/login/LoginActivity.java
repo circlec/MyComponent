@@ -7,8 +7,9 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 
 import zc.account.R;
 import zc.commonlib.base.BaseActivity;
+import zc.commonlib.router.ARouterPath;
 
-@Route(path = "/account/login")
+@Route(path = ARouterPath.ACCOUNT_LOGIN)
 public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginContract.View {
 
     @Override
