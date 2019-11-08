@@ -1,4 +1,4 @@
-package zc.commonlib;
+package zc.commonlib.base;
 
 import io.reactivex.disposables.Disposable;
 

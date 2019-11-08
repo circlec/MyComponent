@@ -1,4 +1,4 @@
-package zc.commonlib;
+package zc.commonlib.base;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -9,8 +9,8 @@ import io.reactivex.disposables.Disposable;
  * @描述
  */
 public class BasePresent<T extends IBaseView> implements IBasePresenter<T> {
-
-    T mView;
+    public final String TAG = this.getClass().getSimpleName();
+    public T mView;
     private CompositeDisposable compositeDisposable;
 
     @Override

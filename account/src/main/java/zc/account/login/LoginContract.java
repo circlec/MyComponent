@@ -1,7 +1,7 @@
 package zc.account.login;
 
-import zc.commonlib.IBasePresenter;
-import zc.commonlib.IBaseView;
+import zc.commonlib.base.IBasePresenter;
+import zc.commonlib.base.IBaseView;
 
 public interface LoginContract {
 

@@ -1,32 +1,33 @@
-package zc.commonlib;
+package zc.commonlib.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.widget.Toast;
+
+import java.lang.reflect.ParameterizedType;
+
+import zc.commonlib.ActivityManager;
 
 
 public class BaseActivity<T extends IBasePresenter> extends AppCompatActivity implements IBaseView {
+    public final String TAG = this.getClass().getSimpleName();
     protected T mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        Class clazz = null;
         try {
-            clazz = Class.forName(this.getClass().getName().replace("Activity", "Presenter"));
-            mPresenter = (T) clazz.newInstance();
+            ParameterizedType pt = (ParameterizedType) this.getClass().getGenericSuperclass();
+            Class<T> clazz = (Class<T>) pt.getActualTypeArguments()[0];
+            mPresenter = clazz.newInstance();
             mPresenter.bindView(this);
-        } catch (ClassNotFoundException e) {
-            Log.i("Test", "ClassNotFoundException");
-            e.printStackTrace();
         } catch (IllegalAccessException e) {
-            Log.i("Test", "IllegalAccessException");
-            e.printStackTrace();
+            throw new RuntimeException("mPresenter init error");
         } catch (InstantiationException e) {
-            Log.i("Test", "InstantiationException");
-            e.printStackTrace();
+            throw new RuntimeException("mPresenter init error");
         }
         super.onCreate(savedInstanceState);
+        ActivityManager.add(this);
     }
 
     @Override
@@ -36,6 +37,7 @@ public class BaseActivity<T extends IBasePresenter> extends AppCompatActivity im
             mPresenter = null;
         }
         super.onDestroy();
+        ActivityManager.remove(this);
     }
 
     @Override
@@ -46,5 +48,16 @@ public class BaseActivity<T extends IBasePresenter> extends AppCompatActivity im
     @Override
     public void hideLoading() {
         // TODO: 2019/11/8
+    }
+
+    @Override
+    public void showError() {
+        hideLoading();
+    }
+
+    @Override
+    public void showErrorMsg(String mErrorMsg) {
+        Toast.makeText(this, mErrorMsg, Toast.LENGTH_SHORT).show();
+        hideLoading();
     }
 }

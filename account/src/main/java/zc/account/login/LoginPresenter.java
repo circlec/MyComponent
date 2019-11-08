@@ -1,12 +1,10 @@
 package zc.account.login;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 import zc.account.data.bean.User;
 import zc.account.data.source.AccountRepository;
-import zc.commonlib.BasePresent;
-import zc.commonlib.network.BaseResponse;
+import zc.commonlib.base.BasePresent;
+import zc.commonlib.network.BaseObserver;
+import zc.commonlib.network.RxUtils;
 
 public class LoginPresenter extends BasePresent<LoginContract.View> implements LoginContract.Presenter {
 
@@ -18,14 +16,18 @@ public class LoginPresenter extends BasePresent<LoginContract.View> implements L
 
     @Override
     public void login(String userName, String password) {
-        accountRepository.login(userName, password)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<BaseResponse<User>>() {
-                    @Override
-                    public void accept(BaseResponse<User> userBaseResponse) throws Exception {
-                        accountRepository.saveUserInfo(userBaseResponse.getValue());
-                    }
-                });
+        addSubscribe(accountRepository.login(userName, password)
+                .compose(RxUtils.rxSchedulerHelper())
+                .compose(RxUtils.handleResult())
+                .subscribeWith(new BaseObserver<User>(mView) {
+
+                                   @Override
+                                   public void onNext(User user) {
+                                       mView.showInputError();
+                                       accountRepository.saveUserInfo(user);
+                                   }
+                               }
+                ));
+
     }
 }

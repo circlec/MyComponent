@@ -31,6 +31,11 @@ android {
 
     //防止资源名重复
     resourcePrefix "app_"
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -48,7 +53,7 @@ dependencies {
 
     implementation project(':commonlib')
 
-    if (!rootProject.ext.isAlone) {
+    if (!rootProject.ext.isNeedAllModule) {
         implementation project(':account')
         implementation project(':setting')
     }

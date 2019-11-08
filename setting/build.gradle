@@ -1,4 +1,4 @@
-if (rootProject.ext.isAlone) {
+if (rootProject.ext.isNeedAllModule) {
     apply plugin: 'com.android.application'
 }else{
     apply plugin: 'com.android.library'
@@ -38,7 +38,7 @@ android {
     sourceSets {
         main {
             //控制两种模式下的资源和代码配置情况
-            if (rootProject.ext.isAlone) {
+            if (rootProject.ext.isNeedAllModule) {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
             } else {
 
@@ -49,6 +49,10 @@ android {
                 }
             }
         }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 

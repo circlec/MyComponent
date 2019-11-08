@@ -1,4 +1,4 @@
-if (rootProject.ext.isAlone) {
+if (rootProject.ext.isNeedAllModule) {
     apply plugin: 'com.android.application'
 }else{
     apply plugin: 'com.android.library'
@@ -36,7 +36,7 @@ android {
     resourcePrefix "account_"
     sourceSets {
         main {
-            if (rootProject.ext.isAlone) {
+            if (rootProject.ext.isNeedAllModule) {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
             } else {
                 manifest.srcFile 'src/main/account/AndroidManifest.xml'
@@ -46,6 +46,11 @@ android {
                 }
             }
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 

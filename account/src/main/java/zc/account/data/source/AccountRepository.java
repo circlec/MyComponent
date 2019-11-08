@@ -26,6 +26,7 @@ public class AccountRepository implements AccountDataSource {
         INSTANCE = null;
     }
 
+    @Override
     public Observable<BaseResponse<User>> login(String userName, String password) {
         return RetrofitManager.getInstance().getRetrofitService(AccountDataSource.class).login(userName,password);
     }
