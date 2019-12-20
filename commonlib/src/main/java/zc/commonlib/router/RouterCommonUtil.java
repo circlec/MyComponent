@@ -15,4 +15,8 @@ public class RouterCommonUtil {
     }
 
 
+    public static void startSettingFragmentActivity(final Context context) {
+
+        ARouter.getInstance().build(ARouterPath.SETTING_SETTING_FRAGMENT).navigation(context);
+    }
 }

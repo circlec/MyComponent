@@ -13,4 +13,5 @@ public class ARouterPath {
 
     public static final String SETTING_SETTING = "/setting/setting";
 
+    public static final String SETTING_SETTING_FRAGMENT = "/setting/setting/fragment";
 }

@@ -2,11 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="zc.setting">
 
-    <application
-        android:theme="@style/setting_AppTheme">
-        <activity
-            android:name=".SettingsActivity">
-        </activity>
+    <application android:theme="@style/setting_AppTheme">
+        <activity android:name=".fragment.MyFragmentActivity"></activity>
+        <activity android:name=".SettingsActivity"></activity>
     </application>
 
 </manifest>

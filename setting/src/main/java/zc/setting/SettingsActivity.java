@@ -25,27 +25,25 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.setting_activity_setting);
         TextView textView = findViewById(R.id.tv);
         TextView tvToLogin = findViewById(R.id.tv_to_login);
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        TextView tvToFragment = findViewById(R.id.tv_to_fragment);
+
+
+        textView.setOnClickListener(v ->
                 RetrofitManager.getInstance().getRetrofitService(SettingService.class)
-                        .login("15653125630", "123456")
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Consumer<BaseResponse<User>>() {
-                            @Override
-                            public void accept(BaseResponse<User> userBaseResponse) throws Exception {
-                                Log.i("Test", "accept: " + userBaseResponse.getResult());
-                            }
-                        });
-            }
+                .login("15653125630", "123456")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<BaseResponse<User>>() {
+                    @Override
+                    public void accept(BaseResponse<User> userBaseResponse) throws Exception {
+                        Log.i("Test", "accept: " + userBaseResponse.getResult());
+                    }
+                }));
+        tvToLogin.setOnClickListener(v -> {
+            RouterCommonUtil.startLoginActivity(SettingsActivity.this);
+            finish();
         });
-        tvToLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RouterCommonUtil.startLoginActivity(SettingsActivity.this);
-                finish();
-            }
-        });
+        tvToFragment.setOnClickListener(v-> RouterCommonUtil.startSettingFragmentActivity(SettingsActivity.this));
+
     }
 }
