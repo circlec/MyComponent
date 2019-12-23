@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -26,6 +25,7 @@ public class SettingsActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.tv);
         TextView tvToLogin = findViewById(R.id.tv_to_login);
         TextView tvToFragment = findViewById(R.id.tv_to_fragment);
+        TextView tvToMytest = findViewById(R.id.tv_to_mytest);
 
 
         textView.setOnClickListener(v ->
@@ -41,9 +41,9 @@ public class SettingsActivity extends AppCompatActivity {
                 }));
         tvToLogin.setOnClickListener(v -> {
             RouterCommonUtil.startLoginActivity(SettingsActivity.this);
-            finish();
         });
         tvToFragment.setOnClickListener(v-> RouterCommonUtil.startSettingFragmentActivity(SettingsActivity.this));
 
+        tvToMytest.setOnClickListener(v->RouterCommonUtil.startMyTestActivity(SettingsActivity.this));
     }
 }

@@ -26,5 +26,15 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+        TextView tv_setting = findViewById(R.id.tv_setting);
+        tv_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this,"click",Toast.LENGTH_SHORT).show();
+                RouterCommonUtil.startSettingActivity(MainActivity.this);
+                finish();
+            }
+        });
+
     }
 }

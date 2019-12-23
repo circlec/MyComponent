@@ -19,4 +19,9 @@ public class RouterCommonUtil {
 
         ARouter.getInstance().build(ARouterPath.SETTING_SETTING_FRAGMENT).navigation(context);
     }
+
+    public static void startMyTestActivity(final Context context) {
+
+        ARouter.getInstance().build(ARouterPath.SETTING_TEST_MYTEST).navigation(context);
+    }
 }

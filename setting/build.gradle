@@ -3,7 +3,8 @@ if (!rootProject.ext.isNeedAllModule) {
 } else {
     apply plugin: 'com.android.library'
 }
-
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 //android配置
 def config = rootProject.ext.android
 
@@ -11,6 +12,7 @@ def config = rootProject.ext.android
 def supportLib = rootProject.ext.supportDependencies
 //其他相关库依赖
 def otherLib = rootProject.ext.otherDependencies
+
 android {
     compileSdkVersion config.compileSdkVersion
     defaultConfig {
@@ -22,7 +24,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
     }
@@ -32,6 +34,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        lintOptions { abortOnError false }
     }
     resourcePrefix "setting_"
 
@@ -55,7 +58,11 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
-
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -70,6 +77,9 @@ dependencies {
 
     implementation otherLib.arouterApi
     annotationProcessor otherLib.arouterAnnotationProcessor
+    kapt otherLib.arouterAnnotationProcessor
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation project(":commonlib")
+
 }

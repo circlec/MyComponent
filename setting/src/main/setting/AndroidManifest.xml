@@ -3,8 +3,10 @@
     package="zc.setting">
 
     <application android:theme="@style/setting_AppTheme">
-        <activity android:name=".fragment.MyFragmentActivity"></activity>
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".test.MyTestActivity"></activity>
+        <activity android:name=".test.SettingActivityMainActivityActivity" />
+        <activity android:name=".fragment.MyFragmentActivity" />
+        <activity android:name=".SettingsActivity" />
     </application>
 
 </manifest>
