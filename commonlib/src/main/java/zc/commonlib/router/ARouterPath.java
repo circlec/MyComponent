@@ -13,8 +13,6 @@ public class ARouterPath {
 
     public static final String SETTING_SETTING = "/setting/setting";
 
-    public static final String SETTING_SETTING_FRAGMENT = "/setting/setting/fragment";
-
     public static final String SETTING_TEST_MYTEST= "/setting/test/mytest";
 
 
