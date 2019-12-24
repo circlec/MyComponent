@@ -17,6 +17,7 @@ import zc.commonlib.network.BaseResponse;
 import zc.commonlib.network.RetrofitManager;
 import zc.commonlib.router.ARouterPath;
 import zc.commonlib.router.RouterCommonUtil;
+import zc.setting.data.bean.User;
 
 @Route(path = ARouterPath.SETTING_SETTING)
 public class SettingsActivity extends AppCompatActivity {

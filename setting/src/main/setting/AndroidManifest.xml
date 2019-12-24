@@ -4,8 +4,6 @@
 
     <application android:theme="@style/setting_AppTheme">
         <activity android:name=".test.MyTestActivity"></activity>
-        <activity android:name=".test.SettingActivityMainActivityActivity" />
-        <activity android:name=".fragment.MyFragmentActivity" />
         <activity android:name=".SettingsActivity" />
     </application>
 

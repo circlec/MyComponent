@@ -1,4 +1,4 @@
-package zc.setting;
+package zc.setting.data.bean;
 
 /**
  * @作者 zhouchao

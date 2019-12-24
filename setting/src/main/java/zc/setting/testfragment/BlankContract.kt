@@ -12,5 +12,7 @@ interface BlankContract {
     interface Presenter : IBasePresenter<View> {
         fun login()
 
+        fun saveNotifySwitchStatus(isOpen: Boolean)
+
     }
 }
