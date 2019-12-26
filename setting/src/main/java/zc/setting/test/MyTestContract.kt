@@ -10,6 +10,7 @@ interface MyTestContract {
     }
 
     interface Presenter : IBasePresenter<View> {
+        fun login()
 
     }
 }

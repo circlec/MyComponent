@@ -17,6 +17,6 @@ open class MyTestActivity : BaseActivity<MyTestPresenter>(), MyTestContract.View
     }
 
     override fun initData() {
-
+        mPresenter.login()
     }
 }

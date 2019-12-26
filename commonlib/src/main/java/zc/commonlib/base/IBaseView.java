@@ -17,5 +17,7 @@ public interface IBaseView {
 
     void showErrorMsg(String mErrorMsg);
 
+    void showToast(String message);
+
 
 }

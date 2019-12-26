@@ -66,4 +66,9 @@ public abstract class BaseActivity<T extends IBasePresenter> extends AppCompatAc
         Toast.makeText(this, mErrorMsg, Toast.LENGTH_SHORT).show();
         hideLoading();
     }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
 }
