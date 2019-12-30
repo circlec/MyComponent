@@ -15,7 +15,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [ AROUTER_MODULE_NAME : project.getName() ]
@@ -50,15 +50,14 @@ dependencies {
     annotationProcessor otherLib.arouterAnnotationProcessor
 
 
-    api 'com.squareup.okhttp3:logging-interceptor:3.10.0'
-    api 'com.squareup.okhttp3:okhttp:3.10.0'
-    api 'com.squareup.retrofit2:retrofit:2.4.0'
-    api 'com.squareup.retrofit2:converter-gson:2.3.0'
-    api 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-    api 'io.reactivex.rxjava2:rxjava:2.1.16'
-    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    api otherLib.okhttpLogging
+    api  otherLib.okhttp
+    api otherLib.retrofit
+    api otherLib.retrofitConverterGson
+    api otherLib.retrofitAdapterRxjava
+    api otherLib.rxjava
+    api otherLib.rxAndroid
 
-    api 'com.github.bumptech.glide:glide:4.6.1'
-    api 'com.liulishuo.filedownloader:library:1.6.2'
+    api otherLib.glide
 
 }
