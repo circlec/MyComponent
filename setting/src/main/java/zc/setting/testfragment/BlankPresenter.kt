@@ -1,25 +1,31 @@
 package zc.setting.testfragment
 
 import zc.commonlib.base.BasePresent
-import zc.commonlib.network.RetrofitManager
+import zc.commonlib.network.BaseObserver
+import zc.commonlib.network.RxUtils
 import zc.setting.data.SettingRepository
+import zc.setting.data.bean.User
 
 /**
  * Presenter
  */
 open class BlankPresenter : BasePresent<BlankContract.View>(), BlankContract.Presenter {
 
-    var repository: SettingRepository = TODO()
+     var repository: SettingRepository = SettingRepository.getInstance()
 
     fun BlankPresenter() {
-        repository = SettingRepository.getInstance()
     }
 
     override fun login() {
-        addSubscribe(repository
-                .login("13121080560", "000000")
-                .subscribe { mView.showErrorMsg(it.result.toString()) }
-        )
+        addSubscribe(repository.login("13121080560", "000000")
+                .compose(RxUtils.rxSchedulerHelper())
+                .compose(RxUtils.handleResult())
+                .subscribeWith(object : BaseObserver<User?>(mView) {
+                    override fun onNext(user: User) {
+                        mView.showErrorMsg("ddd")
+                    }
+                }
+                ))
     }
 
     override fun saveNotifySwitchStatus(isOpen: Boolean) {

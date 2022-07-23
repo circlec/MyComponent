@@ -9,10 +9,6 @@ public interface LoginContract {
 
         void showInputError();
 
-        void showProgress();
-
-        void dismissProgress();
-
     }
 
     interface Presenter extends IBasePresenter<View> {

@@ -9,7 +9,7 @@ def otherLib = rootProject.ext.otherDependencies
 android {
     compileSdkVersion config.compileSdkVersion
     defaultConfig {
-        applicationId "zc.mycomponent"
+        applicationId "com.pin"
         minSdkVersion config.minSdkVersion
         targetSdkVersion config.targetSdkVersion
         versionCode 1
@@ -36,6 +36,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -43,11 +46,11 @@ dependencies {
     implementation supportLib.supportAppcompat
     implementation supportLib.constraintLayout
     implementation supportLib.suppoutDesign
-    testImplementation otherLib.junit
-    //noinspection GradleCompatible
     androidTestImplementation supportLib.suppoutTestRunner
     androidTestImplementation supportLib.suppoutTestEspresso
+    //noinspection GradleCompatible
 
+    testImplementation otherLib.junit
     implementation otherLib.arouterApi
     annotationProcessor otherLib.arouterAnnotationProcessor
 

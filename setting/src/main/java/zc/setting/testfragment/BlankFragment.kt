@@ -1,13 +1,9 @@
 package zc.setting.testfragment
 
-import zc.setting.R
 import zc.commonlib.base.BaseFragment
+import zc.setting.databinding.SettingFragmentBlankBinding
 
-open class BlankFragment : BaseFragment<BlankPresenter>(), BlankContract.View {
-
-    override fun getLayoutId(): Int {
-        return R.layout.setting_fragment_blank;
-    }
+open class BlankFragment : BaseFragment<BlankPresenter,SettingFragmentBlankBinding>(), BlankContract.View {
 
     override fun initView() {
         mPresenter.login()

@@ -3,7 +3,9 @@ package zc.commonlib.base;
 
 public interface IBaseView {
 
-    int getLayoutId();
+    void showToast(String message);
+
+    void showToast(int resId);
 
     void initView();
 

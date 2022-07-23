@@ -34,6 +34,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -41,14 +44,16 @@ dependencies {
     implementation supportLib.supportAppcompat
     implementation supportLib.constraintLayout
     implementation supportLib.suppoutDesign
-    testImplementation otherLib.junit
-    //noinspection GradleCompatible
     androidTestImplementation supportLib.suppoutTestRunner
     androidTestImplementation supportLib.suppoutTestEspresso
 
+    //noinspection GradleCompatible
+
+    testImplementation otherLib.junit
     implementation otherLib.arouterApi
     annotationProcessor otherLib.arouterAnnotationProcessor
 
+    api otherLib.loadingDialog
 
     api 'com.squareup.okhttp3:logging-interceptor:3.10.0'
     api 'com.squareup.okhttp3:okhttp:3.10.0'
@@ -58,7 +63,6 @@ dependencies {
     api 'io.reactivex.rxjava2:rxjava:2.1.16'
     api 'io.reactivex.rxjava2:rxandroid:2.0.1'
 
-    api 'com.github.bumptech.glide:glide:4.6.1'
-    api 'com.liulishuo.filedownloader:library:1.6.2'
+    api 'com.github.bumptech.glide:glide:4.12.0'
 
 }

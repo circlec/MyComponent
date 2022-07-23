@@ -58,6 +58,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 kapt {
     arguments {
@@ -70,12 +73,11 @@ dependencies {
     implementation supportLib.supportAppcompat
     implementation supportLib.constraintLayout
     implementation supportLib.suppoutDesign
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    testImplementation otherLib.junit
-    //noinspection GradleCompatible
     androidTestImplementation supportLib.suppoutTestRunner
     androidTestImplementation supportLib.suppoutTestEspresso
+    //noinspection GradleCompatible
 
+    testImplementation otherLib.junit
     implementation otherLib.arouterApi
     annotationProcessor otherLib.arouterAnnotationProcessor
     kapt otherLib.arouterAnnotationProcessor
