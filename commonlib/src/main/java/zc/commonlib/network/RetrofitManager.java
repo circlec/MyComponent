@@ -4,9 +4,11 @@ import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import zc.commonlib.BuildConfig;
 
 /**
  * @作者 zhouchao
@@ -18,7 +20,7 @@ public class RetrofitManager {
     private HashMap<String, Retrofit> retrofitHashMap = new HashMap<>();
     private static final long DEFAULT_MILLISECONDS = 20000;
 
-    private static final String BASE_URL = "http://genius.enn.cn/encdata-wzd-safe/";
+    private static final String BASE_URL = "https://record.rurrrr.com/api/record/v1/";
 
     private RetrofitManager() {
     }
@@ -53,9 +55,14 @@ public class RetrofitManager {
      * @return Retrofit
      */
     private Retrofit createrRetrofit() {
-
-        OkHttpClient httpClient = new OkHttpClient().newBuilder()
-                .readTimeout(DEFAULT_MILLISECONDS, TimeUnit.SECONDS)
+        OkHttpClient.Builder builder = new OkHttpClient().newBuilder();
+        if (BuildConfig.DEBUG) {
+            HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            builder.addInterceptor(loggingInterceptor);
+        }
+        builder.addInterceptor(new HeaderIntercept());
+        OkHttpClient httpClient = builder.readTimeout(DEFAULT_MILLISECONDS, TimeUnit.SECONDS)
                 .connectTimeout(DEFAULT_MILLISECONDS, TimeUnit.SECONDS)
                 .writeTimeout(DEFAULT_MILLISECONDS, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)

@@ -1,13 +1,20 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="commonlib_theme_fullscreen" parent="@style/Theme.AppCompat.Light">
+    <style name="commonlib_AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/commonlib_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/commonlib_colorPrimaryDark</item>
+        <item name="colorAccent">@color/commonlib_colorAccent</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+    <style name="commonlib_theme_fullscreen" parent="@style/Theme.AppCompat.DayNight">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
-
     <style name="commonlib_loading_dialog" parent="@android:style/Theme.Holo.Light.Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
@@ -17,5 +24,15 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:background">#00000000</item>
+    </style>
+    <style name="commonlib_not_fullscreen_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="colorPrimary">@color/commonlib_colorPrimary</item> <!--浅蓝色-->
+        <item name="colorPrimaryDark">@color/commonlib_white</item> <!--深蓝色-->
     </style>
 </resources>

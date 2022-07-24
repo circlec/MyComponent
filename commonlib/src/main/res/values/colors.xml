@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="commonlib_colorPrimary">#3F51B5</color>
+    <color name="commonlib_colorPrimaryDark">#303F9F</color>
+    <color name="commonlib_colorAccent">#FF4081</color>
+
+    <color name="commonlib_background">#F0EFEF</color>
+
+    <color name="commonlib_white">#FFFFFFFF</color>
+    <color name="commonlib_black">#FF000000</color>
+    <color name="commonlib_orange_fffc533e">#FFFC533E</color>
+    <color name="commonlib_gray">#FF949393</color>
+    <color name="commonlib_transparent">#00000000</color>
+
+    <color name="commonlib_text_bg">#FFFFFFFF</color>
+    <color name="commonlib_color_cdcdcd">#ffcdcdcd</color>
+    <color name="commonlib_color_22a01e">#22A01E</color>
+    <color name="commonlib_color_a7a7b8">#a7a7b8</color>
+    <color name="commonlib_color_f7f7f7">#f7f7f7</color>
+    <color name="commonlib_color_eeeeee">#eeeeee</color>
+    <color name="commonlib_color_a0a0a0">#a0a0a0</color>
+
+    <color name="commonlib_status_bar">#FFFFFF</color>
+
+    <color name="commonlib_color_light_grey">#999999</color>
+</resources>

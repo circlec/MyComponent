@@ -2,12 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="zc.account">
 
-
-    <application
-        android:theme="@style/account_AppTheme">
-        <activity
-            android:name="zc.account.login.LoginActivity">
-        </activity>
+    <application >
+        <activity android:name=".login.LoginActivity" android:exported="true"/>
     </application>
 
 </manifest>

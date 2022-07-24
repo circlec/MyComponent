@@ -1,3 +1,3 @@
-# MyComponent
+# Pin
 
-## my component demo
+## 项目简介

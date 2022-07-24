@@ -75,6 +75,7 @@ dependencies {
     implementation supportLib.suppoutDesign
     androidTestImplementation supportLib.suppoutTestRunner
     androidTestImplementation supportLib.suppoutTestEspresso
+    implementation supportLib.material
     //noinspection GradleCompatible
 
     testImplementation otherLib.junit

@@ -1,5 +1,7 @@
 package zc.commonlib.base;
 
+import static android.view.View.OVER_SCROLL_NEVER;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.widget.Toast;
@@ -11,8 +13,12 @@ import java.util.Objects;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import zc.commonlib.ActivityManager;
+import zc.commonlib.R;
+import zc.commonlib.utils.statusbar.StatusBarUtil;
 import zc.commonlib.view.MyLoadingDialog;
 
 public abstract class BaseActivity<T extends IBasePresenter, V extends ViewBinding> extends AppCompatActivity implements IBaseView {
@@ -26,6 +32,8 @@ public abstract class BaseActivity<T extends IBasePresenter, V extends ViewBindi
         super.onCreate(savedInstanceState);
         initBinding();
         ActivityManager.add(this);
+        StatusBarUtil.setStatusColor(this.getWindow(), getResources().getColor(R.color.commonlib_status_bar), 1f);
+
         initView();
         initData();
     }
@@ -100,5 +108,18 @@ public abstract class BaseActivity<T extends IBasePresenter, V extends ViewBindi
     @Override
     public void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public RecyclerView initRecyclerView(RecyclerView recyclerView, RecyclerView.Adapter adapter) {
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setOverScrollMode(OVER_SCROLL_NEVER);
+        return recyclerView;
+    }
+    public RecyclerView initRecyclerView(RecyclerView recyclerView, RecyclerView.Adapter adapter, RecyclerView.LayoutManager layoutManager) {
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setOverScrollMode(OVER_SCROLL_NEVER);
+        return recyclerView;
     }
 }

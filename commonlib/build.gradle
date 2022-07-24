@@ -12,8 +12,6 @@ android {
     defaultConfig {
         minSdkVersion config.minSdkVersion
         targetSdkVersion config.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
@@ -46,7 +44,7 @@ dependencies {
     implementation supportLib.suppoutDesign
     androidTestImplementation supportLib.suppoutTestRunner
     androidTestImplementation supportLib.suppoutTestEspresso
-
+    implementation supportLib.material
     //noinspection GradleCompatible
 
     testImplementation otherLib.junit

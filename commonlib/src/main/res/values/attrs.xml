@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="commonlib_CircleImageView">
+        <attr name="commonlib_civ_border_width" format="dimension" />
+        <attr name="commonlib_civ_border_color" format="color" />
+        <attr name="commonlib_civ_border_overlay" format="boolean" />
+        <attr name="commonlib_civ_fill_color" format="color" />
+        <attr name="commonlib_civ_circle_background_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="commonlib_CountTimeView">
+        <attr name="commonlib_inittext" format="string" />
+        <attr name="commonlib_prefixruntext" format="string" />
+        <attr name="commonlib_suffixruntext" format="string" />
+        <attr name="commonlib_finishtext" format="string" />
+        <attr name="commonlib_totaltime" format="integer" />
+        <attr name="commonlib_onetime" format="integer" />
+        <attr name="commonlib_timecolor" format="color|reference" />
+    </declare-styleable>
+</resources>

@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="zc.setting">
 
-    <application android:theme="@style/setting_AppTheme">
-        <activity android:name=".test.MyTestActivity"/>
-        <activity android:name=".SettingsActivity" />
+    <application >
+        <activity android:name=".test.MyTestActivity" android:exported="true"/>
+        <activity android:name=".SettingsActivity" android:exported="true"/>
     </application>
 
 </manifest>

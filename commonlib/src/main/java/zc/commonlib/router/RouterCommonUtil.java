@@ -15,7 +15,14 @@ public class RouterCommonUtil {
     }
 
     public static void startMyTestActivity(final Context context) {
-
         ARouter.getInstance().build(ARouterPath.SETTING_TEST_MYTEST).navigation(context);
+    }
+
+    public static void startCameraPriview(final Context context) {
+        ARouter.getInstance().build(ARouterPath.CAMERA_PREVIEW).navigation(context);
+    }
+
+    public static void startContentMain(final Context context) {
+        ARouter.getInstance().build(ARouterPath.CONTENT_MAIN).navigation(context);
     }
 }

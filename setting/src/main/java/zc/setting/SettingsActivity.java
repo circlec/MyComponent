@@ -16,15 +16,18 @@ import io.reactivex.disposables.Disposable;
 import zc.commonlib.network.RxUtils;
 import zc.commonlib.router.ARouterPath;
 import zc.commonlib.router.RouterCommonUtil;
+import zc.commonlib.utils.statusbar.StatusBarUtil;
 import zc.setting.data.SettingRepository;
 import zc.setting.data.bean.User;
 
 @Route(path = ARouterPath.SETTING_SETTING)
 public class SettingsActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_activity_setting);
+        StatusBarUtil.setStatusColor(this.getWindow(), getResources().getColor(R.color.commonlib_status_bar), 1f);
         TextView textView = findViewById(R.id.tv);
         TextView tvToLogin = findViewById(R.id.tv_to_login);
         TextView tvToMytest = findViewById(R.id.tv_to_mytest);

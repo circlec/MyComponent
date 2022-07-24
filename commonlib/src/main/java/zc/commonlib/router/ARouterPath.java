@@ -15,5 +15,8 @@ public class ARouterPath {
 
     public static final String SETTING_TEST_MYTEST= "/setting/test/mytest";
 
+    public static final String CAMERA_PREVIEW= "/camera/priview";
+
+    public static final String CONTENT_MAIN= "/content/main";
 
 }

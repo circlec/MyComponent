@@ -1,14 +1,13 @@
 ext {
 
-    isNeedAllModule = true
+    isNeedAllModule = false
 
     android = [
-            compileSdkVersion: 29,
+            compileSdkVersion: 32,
             minSdkVersion    : 21,
-            targetSdkVersion : 29
+            targetSdkVersion : 32
     ]
-    //Version
-    supportLibrary = "28.0.0"
+
     //supportLibraries dependencies
     supportDependencies = [
             supportAppcompat   : 'androidx.appcompat:appcompat:1.0.0',
@@ -17,6 +16,7 @@ ext {
             suppoutTestEspresso: 'androidx.test.espresso:espresso-core:3.3.0',
             constraintLayout   : 'androidx.constraintlayout:constraintlayout:2.0.4',
             legacy             : 'androidx.legacy:legacy-support-v4:1.0.0',
+            material           : 'com.google.android.material:material:1.2.0'
 
     ]
     //other  dependencies

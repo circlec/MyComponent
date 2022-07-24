@@ -28,10 +28,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    //防止资源名重复
-    resourcePrefix "app_"
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -39,6 +35,8 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    //防止资源名重复
+    resourcePrefix "app_"
 }
 
 dependencies {
@@ -48,6 +46,7 @@ dependencies {
     implementation supportLib.suppoutDesign
     androidTestImplementation supportLib.suppoutTestRunner
     androidTestImplementation supportLib.suppoutTestEspresso
+    implementation supportLib.material
     //noinspection GradleCompatible
 
     testImplementation otherLib.junit
@@ -59,6 +58,8 @@ dependencies {
     if (rootProject.ext.isNeedAllModule) {
         implementation project(':account')
         implementation project(':setting')
+        implementation project(':camera')
+        implementation project(':content')
     }
 
 }
